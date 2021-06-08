@@ -55,6 +55,7 @@ export default function FilterMoviesCard(props) {
 
   const handleChange = (e, type, value) => {
     e.preventDefault()
+    props.onUserInput(type, value)   // NEW
     // Completed later
   };
   const handleTextChange = e => {
