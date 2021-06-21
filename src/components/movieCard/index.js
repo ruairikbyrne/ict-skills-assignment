@@ -44,6 +44,7 @@ export default function MovieCard({ movie, action }) {
               <FavoriteIcon />
             </Avatar>
           ) : null
+
         }
         title={
           <Typography variant="h5" component="p">
