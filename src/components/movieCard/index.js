@@ -30,6 +30,8 @@ export default function MovieCard({ movie, action }) {
 
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;
+  } else {
+    movie.favorite = false;
   }
 
   return (
