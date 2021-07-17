@@ -97,7 +97,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         Reviews
       </Fab>
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <MovieCredits movie={movie} />
+        <MovieReviews movie={movie} />
       </Drawer>
     </>
   );
