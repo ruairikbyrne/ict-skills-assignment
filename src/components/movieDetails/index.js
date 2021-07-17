@@ -1,6 +1,7 @@
 import React, { useState} from "react";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import MonetizationIcon from "@material-ui/icons/MonetizationOn";
 import StarRate from "@material-ui/icons/StarRate";
@@ -9,7 +10,8 @@ import Fab from "@material-ui/core/Fab";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import MovieReviews from "../movieReviews"
+import MovieReviews from "../movieReviews";
+import MovieCredits from "../movieCredits";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -77,6 +79,14 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         ))}
       </Paper>
 
+      <Typography variant="h5" component="h3">
+        Cast
+      </Typography>
+
+      <Button variant="contained" color="secondary" onClick={() =>setDrawerOpen(true)}>
+        Cast Details
+      </Button>
+
       <Fab
         color="secondary"
         variant="extended"
@@ -87,7 +97,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         Reviews
       </Fab>
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <MovieReviews movie={movie} />
+        <MovieCredits movie={movie} />
       </Drawer>
     </>
   );

@@ -51,7 +51,7 @@
     )
       .then((res) => res.json())
       .then((json) => {
-        // console.log(json.results);
+         console.log(json.results);
         return json.results;
       });
   };
@@ -64,4 +64,15 @@
       throw new Error(response.json().message);
     }
     return response.json();
+  };
+
+  export const getMovieCredits = (id) => {
+    return fetch(
+      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json.results);
+        return json.results;
+      });
   };
