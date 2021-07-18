@@ -1,7 +1,16 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
+
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import { Link } from "react-router-dom";
+import { getMovieCredits } from "../../api/tmdb-api";
+
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import MonetizationIcon from "@material-ui/icons/MonetizationOn";
 import StarRate from "@material-ui/icons/StarRate";
@@ -11,7 +20,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import MovieReviews from "../movieReviews";
-import MovieCredits from "../movieCredits";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,6 +44,28 @@ const useStyles = makeStyles((theme) => ({
 const MovieDetails = ({ movie }) => {  // Don't miss this!
   const classes = useStyles();
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const [credits, setCredits] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    getMovieCredits(movie.id).then((credits) => {
+      setCredits(credits);
+      console.log("Credits:", credits)
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (loading) {
+    return <p>Data is loading...</p>;
+  }
 
   return (
     <>
@@ -83,9 +114,40 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         Cast
       </Typography>
 
-      <Button variant="contained" color="secondary" onClick={() =>setDrawerOpen(true)}>
-        Cast Details
-      </Button>
+      <TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="credits table">
+        <TableHead>
+          <TableRow>
+            <TableCell >Actor</TableCell>
+            <TableCell align="center">Character</TableCell>
+            <TableCell align="right">More</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {credits.map((c) => (
+            <TableRow key={c.cast.id}>
+              <TableCell component="th" scope="row">
+                {c.cast.name}
+              </TableCell>
+              <TableCell >{c.cast.character}</TableCell>
+              <TableCell >
+                <Link
+                  to={{
+                    pathname: `/credits/${c.cast.id}`,
+                    state: {
+                      credit: c,
+                      movie: movie,
+                    },
+                  }}
+                >
+                  Full Bio
+                </Link>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
 
       <Fab
         color="secondary"
