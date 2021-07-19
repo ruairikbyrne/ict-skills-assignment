@@ -119,21 +119,21 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         <TableHead>
           <TableRow>
             <TableCell >Actor</TableCell>
-            <TableCell align="center">Character</TableCell>
-            <TableCell align="right">More</TableCell>
+            <TableCell >Character</TableCell>
+            <TableCell >More</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {credits.map((c) => (
-            <TableRow key={c.cast.id}>
+            <TableRow key={c.id}>
               <TableCell component="th" scope="row">
-                {c.cast.name}
+                {c.name}
               </TableCell>
-              <TableCell >{c.cast.character}</TableCell>
+              <TableCell >{c.character}</TableCell>
               <TableCell >
                 <Link
                   to={{
-                    pathname: `/credits/${c.cast.id}`,
+                    pathname: `/credits/${c.id}`,
                     state: {
                       credit: c,
                       movie: movie,

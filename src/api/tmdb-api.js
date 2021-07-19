@@ -72,8 +72,8 @@
     )
       .then((res) => res.json())
       .then((json) => {
-        console.log(json.results);
-        return json.results;
+        console.log(json.cast);
+        return json.cast;
       });
   };
 
