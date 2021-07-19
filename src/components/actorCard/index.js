@@ -26,14 +26,15 @@ const useStyles = makeStyles({
 
 export default function ActorCard({ actor, action }) {
   const classes = useStyles();
-  const { favorites } = useContext(ActorsContext);
+  
+  const { actorFavorites } = useContext(ActorsContext);
 
-  if (favorites.find((id) => id === actor.id)) {
+  if (actorFavorites.find((id) => id === actor.id)) {
     actor.favorite = true;
   } else {
     actor.favorite = false;
   }
-
+  
   return (
     <Card className={classes.card}>
       <CardHeader
@@ -44,7 +45,6 @@ export default function ActorCard({ actor, action }) {
               <FavoriteIcon />
             </Avatar>
           ) : null
-
         }
         title={
           <Typography variant="h5" component="p">

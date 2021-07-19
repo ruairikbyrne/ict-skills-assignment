@@ -15,17 +15,18 @@ const ActorsContextProvider = (props) => {
     setFavorites( actorFavorites.filter(
       (aId) => aId !== actor.id
     ) )
+    
   };
 
   
   return (
-    <ActorsContext.Provider
+    <ActorsContext.Provider 
       value={{
         actorFavorites,
         addToFavorites,
         removeFromFavorites,
-  
-      }}
+
+    }}
     >
       {props.children}
     </ActorsContext.Provider>
