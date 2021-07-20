@@ -10,7 +10,7 @@ const ActorsContextProvider = (props) => {
   const addToFavorites = (actor) => {
     setFavorites([...actorFavorites,actor.id])
   };
-  // We will use this function in a later section
+  
   const removeFromFavorites = (actor) => {
     setFavorites( actorFavorites.filter(
       (aId) => aId !== actor.id

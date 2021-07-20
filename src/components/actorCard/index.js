@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 
 export default function ActorCard({ actor, action }) {
   const classes = useStyles();
-  
+  /*
   const { actorFavorites } = useContext(ActorsContext);
 
   if (actorFavorites.find((id) => id === actor.id)) {
@@ -34,7 +34,7 @@ export default function ActorCard({ actor, action }) {
   } else {
     actor.favorite = false;
   }
-  
+  */
   return (
     <Card className={classes.card}>
       <CardHeader

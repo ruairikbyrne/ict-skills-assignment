@@ -109,3 +109,25 @@
    }
    return response.json();
  };
+
+ export const getActors = async () => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_video=false&page=1`
+  );
+  if (!response.ok) {
+    throw new Error(response.json().message);
+  }
+  return response.json();
+};
+
+export const getActorImages = async ({queryKey}) => {
+  // eslint-disable-next-line no-unused-vars
+  const [prefix, { id }] = queryKey;
+  const response = await fetch(
+    `https://api.themoviedb.org/3/person/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
+  )
+  if (!response.ok) {
+    throw new Error(response.json().message);
+  }
+  return response.json();
+};
