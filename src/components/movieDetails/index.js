@@ -133,7 +133,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
               <TableCell >
                 <Link
                   to={{
-                    pathname: `/credits/${c.id}`,
+                    pathname: `/actors/${c.id}`,
                     state: {
                       credit: c,
                       movie: movie,
