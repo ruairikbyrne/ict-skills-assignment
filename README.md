@@ -42,19 +42,19 @@ New/modified components:
 
 New/modified views:
 
-![movie details](./moviedetails.png?raw=true)
+![movie details](./moviedetails.PNG?raw=true)
 >Shows detailed information on a movie, modified to show associated cast. Clicking full bio link will open the actors details page.
 
-![top rated movies](./toprated.png?raw=true)
+![top rated movies](./toprated.PNG?raw=true)
 >Shows the top rated movies on tmdb.
 
-![popular moves](./popular.png?raw=true)
+![popular moves](./popular.PNG?raw=true)
 >Shows the most popular movies on tmdb.  This is updated on a daily basis.
 
-![list popular actors](./listactors.png?raw=true)
+![list popular actors](./listactors.PNG?raw=true)
 >Shows the most popular actors on tmdb.  This is updated on a daily basis.
 
-![actor details](./actordetails.png?raw=true)
+![actor details](./actordetails.PNG?raw=true)
 >Provides details of the selected actor.
 
 ### Routing.
