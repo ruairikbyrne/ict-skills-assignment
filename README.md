@@ -1,63 +1,81 @@
 # Assignment - ReactJS app.
 
-Name: ... your name ...
+Name: Ruairi Byrne
 
 ## Overview.
 
-...... State the app concept and objectives. If it's the Movies Fan app extension, only state the additional objectives .........
+Additional objectives was to pull in the actors associated with a movie and be able to view the actors biography.
 
 
-...... A bullet-point list of user features. If it's the Movies Fan app extension, only list new/modified features...... 
+Additional features added to the application:
  
- + Feature 1
- + Feature 2
- + Feature 3
- + etc
- + etc
+ + Top rated movies
+ + Popular movies
+ + List actors associate with movie
+ + Link from movies details page to actors details page
+ + List popular actors
+ + Display actors details including images
 
 ## Setup requirements.
 
-...... A brief explanation (to a third party) of any non-standard setup steps necessary to run your app/client locally (after cloning the repo) ........
+No additional requirements.
 
 ## API Data Model.
 
-..... [For non-Movies Fan app] Insert a diagram of the API's data model (see example below) AND/OR a sample(s) of the JSON documents returned by its endpoints ........
+Additional TMDB endpoints used:
 
-![][model]
-
-......[For the Movies Fan app] Specify the additional TMDB endpoints used and show sample responses, in JSON .........
+ + getMovieCredits - `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
+ + getTopRatedMovies - `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+ + getActor - `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
+ + getActors (Popular Actors) - `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_video=false&page=1`
+ + getActorImages - `https://api.themoviedb.org/3/person/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
 
 ## App Design.
 
 ### Component catalogue.
 
-....... Insert a screenshot from the Storybook UI showing your component catalogue. [For the Movies app, hi-light stories relating to new/modified components - see the example screenshot below] .......
+New/modified components:
 
 ![][stories]
 
 ### UI Design.
 
-...... Insert screenshots of the app's views, with appropriate captions (see example below). (For the Movies Fan App, only show the new/modified views) ........
+New/modified views:
 
-![][view]
->Shows detailed information on a movie. Clicking the 'Reviews' floating action button will display extracts from critic reviews.
+
+![][view1]
+>Shows detailed information on a movie, modified to show associated cast. Clicking full bio link will open the actors details page.
+
+![][view2]
+>Shows the top rated movies on tmdb.
+
+![][view3]
+>Shows the most popular movies on tmdb.  This is updated on a daily basis.
+
+![][view4]
+>Shows the most popular actors on tmdb.  This is updated on a daily basis.
+
+![][view5]
+>Provides details of the selected actor.
 
 ### Routing.
 
-...... Insert a list of the routes supported by your app and state the associated view. If relevant, specify which of the routes require authentication, i.e. protected/private. [For the Movies Fan app, only new routes should be listed.] ......... 
+New routes added to application:
 
-+ GET /blogs - displays all published blogs.
-+ POST /blogs (protected) - add a new blog.
-+ GET /blogs/:id - displays a particular blog.
-+ GET /blogs/:id/comments (protected) - detail view of a particular blog and its comments.
-+ etc.
-+ etc.
++ GET /actors - displays popular actors, updated on a daily basis.
++ GET /movies/popular - displays the most popular films on tmdb.
++ GET /movies/top - displays the top rated movies on tmdb.
++ GET /actors/:id - retrieve details of a selected actor.
 
 ## Independent learning (If relevant).
 
-....... Briefly state any technologies/techniques used in your project codebase that was not covered in the lectures/labs. Provide source code filename (source code excerpts are not required in most cases) references to support your assertions and include references (articles/blogs) ......... 
+Not applicable.
 
 
-[model]: ./data.jpg
-[view]: ./view.png
+
+[view1]: ./moviedetails.png
+[view2]: ./toprated.png
+[view3]: ./popular.png
+[view4]: ./listactors.png
+[view5]: ./actordetails.png
 [stories]: ./storybook.png
