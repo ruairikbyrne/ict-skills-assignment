@@ -6,7 +6,7 @@ import {getActors} from '../api/tmdb-api'
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 
 const ActorsPage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('discover', getActors)
+  const {  data, error, isLoading, isError }  = useQuery('cast', getActors)
 
   if (isLoading) {
     return <Spinner />
