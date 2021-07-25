@@ -63,6 +63,7 @@
     if (!response.ok) {
       throw new Error(response.json().message);
     }
+    console.log(response.json());
     return response.json();
   };
 
